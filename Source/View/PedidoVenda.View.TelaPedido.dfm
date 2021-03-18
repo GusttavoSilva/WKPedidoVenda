@@ -34,8 +34,6 @@ object FrmTelaPedido: TFrmTelaPedido
     Height = 177
     Align = alTop
     TabOrder = 0
-    ExplicitTop = 145
-    ExplicitWidth = 1306
     object lbl_CodCliente: TLabel
       Left = 104
       Top = 64
@@ -118,6 +116,7 @@ object FrmTelaPedido: TFrmTelaPedido
       Font.Height = -16
       Font.Name = 'Segoe UI '
       Font.Style = []
+      NumbersOnly = True
       ParentFont = False
       TabOrder = 0
       Text = '0'
@@ -173,9 +172,6 @@ object FrmTelaPedido: TFrmTelaPedido
     Height = 330
     Align = alClient
     TabOrder = 1
-    ExplicitTop = 148
-    ExplicitWidth = 1306
-    ExplicitHeight = 328
     object lbl_CodProduto: TLabel
       Left = 104
       Top = 32
@@ -271,6 +267,7 @@ object FrmTelaPedido: TFrmTelaPedido
       Font.Height = -16
       Font.Name = 'Segoe UI '
       Font.Style = []
+      NumbersOnly = True
       OEMConvert = True
       ParentFont = False
       TabOrder = 0
@@ -296,6 +293,7 @@ object FrmTelaPedido: TFrmTelaPedido
       Top = 55
       Width = 273
       Height = 26
+      Enabled = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -16
@@ -377,6 +375,7 @@ object FrmTelaPedido: TFrmTelaPedido
       Top = 55
       Width = 196
       Height = 26
+      Enabled = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -16
@@ -397,8 +396,6 @@ object FrmTelaPedido: TFrmTelaPedido
     Color = 13290186
     ParentBackground = False
     TabOrder = 2
-    ExplicitTop = 0
-    ExplicitWidth = 1306
     object pa_Menu: TPanel
       Left = 1
       Top = 1
@@ -406,7 +403,6 @@ object FrmTelaPedido: TFrmTelaPedido
       Height = 143
       Align = alClient
       TabOrder = 0
-      ExplicitWidth = 1304
       object Label2: TLabel
         Left = 523
         Top = 31
@@ -430,6 +426,7 @@ object FrmTelaPedido: TFrmTelaPedido
         Font.Height = -16
         Font.Name = 'Segoe UI '
         Font.Style = []
+        NumbersOnly = True
         ParentFont = False
         TabOrder = 0
         Text = '0'
@@ -480,8 +477,6 @@ object FrmTelaPedido: TFrmTelaPedido
     Color = 13290186
     ParentBackground = False
     TabOrder = 3
-    ExplicitTop = 331
-    ExplicitWidth = 1306
     object lbl_ValorCompra: TLabel
       Left = 1136
       Top = 24
