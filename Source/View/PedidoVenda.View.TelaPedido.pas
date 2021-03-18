@@ -106,14 +106,10 @@ begin
 
   if (DmUtil.mem_ListaProduto.Locate('ORDEM', ordem, [loCaseInsensitive, loPartialKey])) and
     (StrToInt(edt_CodProduto.Text) = Produto) then
-  begin
-    if MessageDlg('Deseja alterar esse produto?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
-    begin
-      TModelProdutos.new.ordem(ordem).CodProduto(StrToInt(edt_CodProduto.Text))
-        .ValorUnitario(StrParaDouble(edt_ValProduto.Text)).Quantidade(StrParaDouble(edt_QntProduto.Text))
-        .ValorTotal(StrParaDouble(edt_ValTotProd.Text)).EditaItemTabTemporaria(DmUtil.mem_ListaProduto)
-    end;
-  end
+
+    TModelProdutos.new.ordem(ordem).CodProduto(StrToInt(edt_CodProduto.Text))
+      .ValorUnitario(StrParaDouble(edt_ValProduto.Text)).Quantidade(StrParaDouble(edt_QntProduto.Text))
+      .ValorTotal(StrParaDouble(edt_ValTotProd.Text)).EditaItemTabTemporaria(DmUtil.mem_ListaProduto)
   else
     TModelProdutos.new.CodProduto(StrToInt(edt_CodProduto.Text)).NomeProduto(edt_NomProduto.Text)
       .ValorUnitario(StrParaDouble(edt_ValProduto.Text)).Quantidade(StrParaDouble(edt_QntProduto.Text))
@@ -134,16 +130,13 @@ end;
 
 procedure TFrmTelaPedido.btn_SalvarClick(Sender: TObject);
 begin
-  if ((edt_CodCliente.Text <> '0') or (edt_CodCliente.Text <> EmptyStr)) and (DmUtil.mem_ListaProduto.RecordCount <> 0)
-  then
-  begin
-    TModelPedido.new.CodCliente(StrToInt(edt_CodCliente.Text)).DataPedido(now)
-      .ValPedido(StrParaDouble(TModelProdutos.new.ValorTotalCompra(DmUtil.mem_ListaProduto))).InsertPedidoDB;
+  TModelPedido.new.CodCliente(StrToInt(edt_CodCliente.Text)).DataPedido(now)
+    .ValPedido(StrParaDouble(TModelProdutos.new.ValorTotalCompra(DmUtil.mem_ListaProduto)))
+    .InsertPedidoDB;
 
-    TmodelPedidoItens.new.InsertProdutosDB(DmUtil.mem_ListaProduto);
+  TmodelPedidoItens.new.InsertProdutosDB(DmUtil.mem_ListaProduto);
 
-    limpaCampos;
-  end;
+  limpaCampos;
 end;
 
 procedure TFrmTelaPedido.db_ListProdutosCellClick(Column: TColumn);
@@ -288,12 +281,9 @@ end;
 
 procedure TFrmTelaPedido.Panel3Click(Sender: TObject);
 begin
-  if MessageDlg('Deseja cancelar o pedido?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
-  begin
-    TmodelPedidoItens.new.CodPedido(StrToInt(edt_CodPedido.Text)).DeleteProdutosDB;
-    TModelPedido.new.CodPedido(StrToInt(edt_CodPedido.Text)).DeletePedido;
-    lbl_ValorCompra.Caption := 'Valor Total: R$0,00';
-  end;
+  TmodelPedidoItens.new.CodPedido(StrToInt(edt_CodPedido.Text)).DeleteProdutosDB;
+  TModelPedido.new.CodPedido(StrToInt(edt_CodPedido.Text)).DeletePedido;
+  lbl_ValorCompra.Caption := 'Valor Total: R$0,00';
 end;
 
 end.
